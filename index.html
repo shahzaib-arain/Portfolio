@@ -126,10 +126,11 @@
             width: 100%;
         }
         
-        /* Section Styles */
+        /* Section Styles - FIXED ALIGNMENT */
         .section-header {
             text-align: center;
             margin-bottom: 60px;
+            padding-top: 20px; /* Added padding for better visibility */
         }
         
         .section-title {
@@ -140,6 +141,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
+            min-height: 60px; /* Ensures consistent height */
         }
         
         .section-number {
@@ -149,6 +151,9 @@
             padding: 5px 15px;
             border-radius: 50px;
             font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .section-subtitle {
@@ -156,9 +161,10 @@
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.5;
         }
         
-        /* Section Spacing */
+        /* Section Spacing - IMPROVED ALIGNMENT */
         section {
             padding: 100px 0;
             position: relative;
@@ -566,16 +572,17 @@
             transform: translateY(-2px);
         }
         
-        /* Certifications Section */
+        /* Certifications Section - UPDATED FOR SCROLL */
         .certifications-section {
             background: rgba(15, 23, 42, 0.5);
         }
         
         .certifications-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 50px;
+            align-items: stretch;
         }
         
         .certification-card {
@@ -588,6 +595,11 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 400px; /* Increased for better content */
+            max-height: 500px; /* Set max height for scroll */
         }
         
         .certification-card:hover {
@@ -622,12 +634,23 @@
             font-size: 32px;
             color: var(--primary);
             margin-bottom: 20px;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        
+        /* CERTIFICATION CONTENT WITH SCROLL - NEW STYLES */
+        .cert-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Enable overflow control */
         }
         
         .cert-content h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
             color: var(--light);
+            line-height: 1.3;
+            flex-shrink: 0; /* Keep title fixed */
         }
         
         .cert-issuer {
@@ -637,6 +660,39 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            flex-shrink: 0; /* Keep issuer fixed */
+        }
+        
+        .cert-description-container {
+            flex-grow: 1;
+            overflow-y: auto; /* Enable vertical scroll */
+            max-height: 180px; /* Limit height for scroll */
+            margin-bottom: 15px;
+            padding-right: 5px; /* Space for scrollbar */
+        }
+        
+        .cert-description-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .cert-description-container::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.3);
+            border-radius: 3px;
+        }
+        
+        .cert-description-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .cert-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .cert-footer {
+            margin-top: auto;
+            flex-shrink: 0; /* Keep footer fixed at bottom */
         }
         
         .cert-date {
@@ -647,7 +703,6 @@
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 500;
-            margin-top: 10px;
         }
         
         .cert-link {
@@ -666,7 +721,108 @@
             gap: 12px;
         }
         
-        /* Certificate Modal */
+        /* Certificate Slider */
+        .certifications-slider {
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .cert-carousel {
+            padding: 20px 0;
+        }
+        
+        .cert-slide {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            min-height: 450px; /* Increased height */
+        }
+        
+        .certification-card-slider {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+            max-height: 500px;
+        }
+        
+        .certification-card-slider:hover {
+            transform: translateY(-10px);
+            border-color: #6366f1;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+        
+        .certification-card-slider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.7s;
+        }
+        
+        .certification-card-slider:hover::before {
+            left: 100%;
+        }
+        
+        /* Carousel controls */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background: rgba(99, 102, 241, 0.4);
+            opacity: 1;
+        }
+        
+        .carousel-control-prev {
+            left: -60px;
+        }
+        
+        .carousel-control-next {
+            right: -60px;
+        }
+        
+        .carousel-indicators {
+            bottom: -50px;
+        }
+        
+        .carousel-indicators button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(99, 102, 241, 0.3);
+            margin: 0 5px;
+        }
+        
+        .carousel-indicators button.active {
+            background-color: var(--primary);
+        }
+        
+        /* Certificate Modal - UPDATED FOR SCROLL */
         .cert-modal {
             display: none;
             position: fixed;
@@ -692,6 +848,8 @@
             position: relative;
             transform-style: preserve-3d;
             animation: modalAppear 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
         }
         
         .cert-modal-header {
@@ -701,6 +859,7 @@
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            flex-shrink: 0;
         }
         
         .cert-modal-header h2 {
@@ -728,9 +887,29 @@
             background: rgba(99, 102, 241, 0.1);
         }
         
+        .cert-modal-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .cert-modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .cert-modal-body::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.3);
+            border-radius: 4px;
+        }
+        
+        .cert-modal-body::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
         .certificate-image-container {
             width: 100%;
-            height: 500px;
+            height: 300px;
             overflow: hidden;
             border-radius: 15px;
             background: rgba(15, 23, 42, 0.8);
@@ -738,11 +917,14 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(99, 102, 241, 0.2);
+            margin-bottom: 20px;
         }
         
         .certificate-image {
             max-width: 100%;
             max-height: 100%;
+            width: auto;
+            height: auto;
             object-fit: contain;
             border-radius: 10px;
         }
@@ -772,11 +954,11 @@
         }
         
         .certificate-details {
-            margin-top: 20px;
             padding: 20px;
             background: rgba(15, 23, 42, 0.5);
             border-radius: 15px;
             border: 1px solid rgba(99, 102, 241, 0.1);
+            margin-top: 20px;
         }
         
         .certificate-details h4 {
@@ -1275,6 +1457,37 @@
             z-index: -1;
         }
         
+        /* Skills Mini in About */
+        .skills-mini {
+            margin: 30px 0;
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-radius: 4px;
+            transition: width 1.5s ease-in-out;
+        }
+        
         /* Animations */
         @keyframes float1 {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -1323,38 +1536,17 @@
             100% { opacity: 1; transform: translateY(0) rotateX(0); }
         }
         
-        /* Skills Mini in About */
-        .skills-mini {
-            margin: 30px 0;
+        /* Responsive - UPDATED FOR BETTER ALIGNMENT */
+        @media (max-width: 1200px) {
+            .carousel-control-prev {
+                left: -30px;
+            }
+            
+            .carousel-control-next {
+                right: -30px;
+            }
         }
         
-        .skill-item {
-            margin-bottom: 20px;
-        }
-        
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            color: #94a3b8;
-            font-size: 14px;
-        }
-        
-        .skill-bar {
-            height: 8px;
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            border-radius: 4px;
-            transition: width 1.5s ease-in-out;
-        }
-        
-        /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -1383,6 +1575,8 @@
                 font-size: 2rem;
                 flex-direction: column;
                 gap: 10px;
+                min-height: 80px; /* Adjusted for mobile */
+                text-align: center;
             }
             
             .hero-title {
@@ -1410,17 +1604,57 @@
                 padding: 20px;
             }
             
-            .certifications-grid {
-                grid-template-columns: 1fr;
+            .certifications-slider {
+                margin-top: 30px;
+            }
+            
+            .certification-card-slider {
+                padding: 20px;
+                min-height: 380px;
+                max-height: 450px;
+            }
+            
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none;
             }
             
             .certificate-image-container {
-                height: 300px;
+                height: 250px;
             }
             
             .cert-modal-content {
                 width: 95%;
                 padding: 20px;
+            }
+            
+            .cert-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .certification-card {
+                min-height: 380px;
+                max-height: 450px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.8rem;
+                min-height: 70px;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .certification-card, .certification-card-slider {
+                max-height: 420px;
             }
         }
     </style>
@@ -1451,11 +1685,13 @@
                 <h2 id="certModalTitle"></h2>
                 <button class="cert-modal-close" id="certModalClose">&times;</button>
             </div>
-            <div class="certificate-image-container" id="certificateImageContainer">
-                <!-- Certificate image will be loaded here -->
-            </div>
-            <div class="certificate-details" id="certificateDetails">
-                <!-- Certificate details will be injected here -->
+            <div class="cert-modal-body">
+                <div class="certificate-image-container" id="certificateImageContainer">
+                    <!-- Certificate image will be loaded here -->
+                </div>
+                <div class="certificate-details" id="certificateDetails">
+                    <!-- Certificate details will be injected here -->
+                </div>
             </div>
         </div>
     </div>
@@ -1709,12 +1945,12 @@
                                 </div>
                             </div>
                             
-                            <a href="Shahzaib Sajjad Cv - Java.pdf" target="_blank" class="btn-3d btn-primary-3d mt-4">
-						    <span class="btn-content">
-						        <i class="fas fa-download"></i>
-						        Download Resume
-						    </span>
-						    <span class="btn-shadow"></span>
+                         <a href="resume.pdf" target="_blank" class="btn-3d btn-primary-3d mt-4">
+							<span class="btn-content">
+								<i class="fas fa-download"></i>
+								Download Resume
+							</span>
+							<span class="btn-shadow"></span>
 						</a>
 
                         </div>
@@ -1808,7 +2044,7 @@
             </div>
         </section>
 
-        <!-- CERTIFICATIONS SECTION -->
+        <!-- CERTIFICATIONS SECTION - UPDATED FOR SCROLL -->
         <section id="certifications" class="certifications-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -1819,7 +2055,174 @@
                     <p class="section-subtitle">Validated skills and professional achievements</p>
                 </div>
                 
-                <div class="certifications-grid">
+                <!-- Certifications Slider -->
+                <div class="certifications-slider" data-aos="fade-up">
+                    <div id="certificationsCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Slide 1 -->
+                            <div class="carousel-item active">
+                                <div class="cert-slide">
+                                    <div class="certification-card-slider" onclick="showCertificate('nodejs')">
+                                        <div class="cert-icon">
+                                            <i class="fab fa-node-js"></i>
+                                        </div>
+                                        <div class="cert-content">
+                                            <h3>Node.js Certification</h3>
+                                            <div class="cert-issuer">
+                                                <i class="fas fa-building"></i>
+                                                <span>Simplilearn</span>
+                                            </div>
+                                            <div class="cert-description-container">
+                                                <p>Comprehensive Node.js development certification covering server-side JavaScript, Express.js, and backend architecture. This certification validates expertise in building scalable, high-performance Node.js applications with modern JavaScript features and best practices.</p>
+                                                <p>Topics covered include asynchronous programming, event-driven architecture, REST API development, authentication, testing, and deployment strategies for Node.js applications.</p>
+                                            </div>
+                                            <div class="cert-footer">
+                                                <div class="cert-date">Issued: 2024</div>
+                                                <a href="#" class="cert-link" onclick="event.stopPropagation(); showCertificate('nodejs'); return false;">
+                                                    View Details <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 2 -->
+                            <div class="carousel-item">
+                                <div class="cert-slide">
+                                    <div class="certification-card-slider" onclick="showCertificate('scrum')">
+                                        <div class="cert-icon">
+                                            <i class="fas fa-tasks"></i>
+                                        </div>
+                                        <div class="cert-content">
+                                            <h3>Scrum Fundamentals Certified (SFCTM)</h3>
+                                            <div class="cert-issuer">
+                                                <i class="fas fa-certificate"></i>
+                                                <span>Scrum Study</span>
+                                            </div>
+                                            <div class="cert-description-container">
+                                                <p>Professional certification in Scrum methodologies, agile project management, and team collaboration frameworks. This certification demonstrates mastery of Scrum principles, roles, events, artifacts, and rules as defined in the Scrum Guide.</p>
+                                                <p>Validates ability to apply Scrum framework in real-world projects, improve team productivity, and deliver value incrementally. Covers sprint planning, daily stand-ups, sprint reviews, retrospectives, and product backlog management.</p>
+                                            </div>
+                                            <div class="cert-footer">
+                                                <div class="cert-date">Certification No: 1069965</div>
+                                                <a href="#" class="cert-link" onclick="event.stopPropagation(); showCertificate('scrum'); return false;">
+                                                    View Details <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 3 -->
+                            <div class="carousel-item">
+                                <div class="cert-slide">
+                                    <div class="certification-card-slider" onclick="showCertificate('spring')">
+                                        <div class="cert-icon">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                        <div class="cert-content">
+                                            <h3>Java Spring Framework 101</h3>
+                                            <div class="cert-issuer">
+                                                <i class="fas fa-university"></i>
+                                                <span>Simplilearn</span>
+                                            </div>
+                                            <div class="cert-description-container">
+                                                <p>Mastery of Spring Framework fundamentals including Dependency Injection, Spring MVC, and Spring Boot basics. This comprehensive certification covers core Spring concepts, configuration, data access, web development, and security.</p>
+                                                <p>Validates skills in building enterprise-grade Java applications using Spring Framework, including IOC container, AOP, JDBC integration, transaction management, and RESTful web services development with Spring MVC and Spring Boot.</p>
+                                            </div>
+                                            <div class="cert-footer">
+                                                <div class="cert-date">Issued: 2024</div>
+                                                <a href="#" class="cert-link" onclick="event.stopPropagation(); showCertificate('spring'); return false;">
+                                                    View Details <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 4 -->
+                            <div class="carousel-item">
+                                <div class="cert-slide">
+                                    <div class="certification-card-slider" onclick="showCertificate('mongodb')">
+                                        <div class="cert-icon">
+                                            <i class="fas fa-database"></i>
+                                        </div>
+                                        <div class="cert-content">
+                                            <h3>MongoDB Certification</h3>
+                                            <div class="cert-issuer">
+                                                <i class="fas fa-server"></i>
+                                                <span>Simplilearn</span>
+                                            </div>
+                                            <div class="cert-description-container">
+                                                <p>Expertise in MongoDB database design, queries, indexing, aggregation framework, and NoSQL database management. This certification validates skills in document-oriented database design and development using MongoDB.</p>
+                                                <p>Covers CRUD operations, data modeling, indexing strategies, aggregation pipeline, replication, sharding, security, and performance optimization for MongoDB applications in production environments.</p>
+                                            </div>
+                                            <div class="cert-footer">
+                                                <div class="cert-date">Issued: 2024</div>
+                                                <a href="#" class="cert-link" onclick="event.stopPropagation(); showCertificate('mongodb'); return false;">
+                                                    View Details <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 5 -->
+                            <div class="carousel-item">
+                                <div class="cert-slide">
+                                    <div class="certification-card-slider" onclick="showCertificate('microservices')">
+                                        <div class="cert-icon">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                        <div class="cert-content">
+                                            <h3>Building Microservices-Driven Applications</h3>
+                                            <div class="cert-issuer">
+                                                <i class="fas fa-cloud"></i>
+                                                <span>Eduonix</span>
+                                            </div>
+                                            <div class="cert-description-container">
+                                                <p>Advanced certification in designing, developing, and deploying microservices-based applications with Spring Cloud. Covers service discovery, API gateway, configuration management, circuit breakers, and distributed tracing.</p>
+                                                <p>Validates expertise in building scalable, resilient microservices architectures using Spring Boot, Spring Cloud, Docker, and container orchestration. Includes patterns for service communication, data management, security, and monitoring in distributed systems.</p>
+                                            </div>
+                                            <div class="cert-footer">
+                                                <div class="cert-date">Cert ID: 4cc2f9c6c4</div>
+                                                <a href="#" class="cert-link" onclick="event.stopPropagation(); showCertificate('microservices'); return false;">
+                                                    View Details <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#certificationsCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#certificationsCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        
+                        <!-- Indicators -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alternative: Grid Layout for Larger Screens -->
+                <div class="certifications-grid d-none d-lg-block" data-aos="fade-up">
                     <!-- Node.js Certification -->
                     <div class="certification-card" data-aos="fade-up" data-aos-delay="100" onclick="showCertificate('nodejs')">
                         <div class="cert-icon">
@@ -1831,8 +2234,16 @@
                                 <i class="fas fa-building"></i>
                                 <span>Simplilearn</span>
                             </div>
-                            <p>Comprehensive Node.js development certification covering server-side JavaScript, Express.js, and backend architecture.</p>
-                            <div class="cert-date">Issued: 2024</div>
+                            <div class="cert-description-container">
+                                <p>Comprehensive Node.js development certification covering server-side JavaScript, Express.js, and backend architecture. This certification validates expertise in building scalable, high-performance Node.js applications with modern JavaScript features and best practices.</p>
+                                <p>Topics covered include asynchronous programming, event-driven architecture, REST API development, authentication, testing, and deployment strategies for Node.js applications.</p>
+                            </div>
+                            <div class="cert-footer">
+                                <div class="cert-date">Issued: 2024</div>
+                                <a href="#" class="cert-link" onclick="event.stopPropagation(); showCertificate('nodejs'); return false;">
+                                    View Details <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
@@ -1847,8 +2258,16 @@
                                 <i class="fas fa-certificate"></i>
                                 <span>Scrum Study</span>
                             </div>
-                            <p>Professional certification in Scrum methodologies, agile project management, and team collaboration frameworks.</p>
-                            <div class="cert-date">Certification No: 1069965</div>
+                            <div class="cert-description-container">
+                                <p>Professional certification in Scrum methodologies, agile project management, and team collaboration frameworks. This certification demonstrates mastery of Scrum principles, roles, events, artifacts, and rules as defined in the Scrum Guide.</p>
+                                <p>Validates ability to apply Scrum framework in real-world projects, improve team productivity, and deliver value incrementally. Covers sprint planning, daily stand-ups, sprint reviews, retrospectives, and product backlog management.</p>
+                            </div>
+                            <div class="cert-footer">
+                                <div class="cert-date">Certification No: 1069965</div>
+                                <a href="#" class="cert-link" onclick="event.stopPropagation(); showCertificate('scrum'); return false;">
+                                    View Details <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
@@ -1863,40 +2282,16 @@
                                 <i class="fas fa-university"></i>
                                 <span>Simplilearn</span>
                             </div>
-                            <p>Mastery of Spring Framework fundamentals including Dependency Injection, Spring MVC, and Spring Boot basics.</p>
-                            <div class="cert-date">Issued: 2024</div>
-                        </div>
-                    </div>
-                    
-                    <!-- MongoDB Certification -->
-                    <div class="certification-card" data-aos="fade-up" data-aos-delay="400" onclick="showCertificate('mongodb')">
-                        <div class="cert-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="cert-content">
-                            <h3>MongoDB Certification</h3>
-                            <div class="cert-issuer">
-                                <i class="fas fa-server"></i>
-                                <span>Simplilearn</span>
+                            <div class="cert-description-container">
+                                <p>Mastery of Spring Framework fundamentals including Dependency Injection, Spring MVC, and Spring Boot basics. This comprehensive certification covers core Spring concepts, configuration, data access, web development, and security.</p>
+                                <p>Validates skills in building enterprise-grade Java applications using Spring Framework, including IOC container, AOP, JDBC integration, transaction management, and RESTful web services development with Spring MVC and Spring Boot.</p>
                             </div>
-                            <p>Expertise in MongoDB database design, queries, indexing, aggregation framework, and NoSQL database management.</p>
-                            <div class="cert-date">Issued: 2024</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Microservices Certification -->
-                    <div class="certification-card" data-aos="fade-up" data-aos-delay="500" onclick="showCertificate('microservices')">
-                        <div class="cert-icon">
-                            <i class="fas fa-microchip"></i>
-                        </div>
-                        <div class="cert-content">
-                            <h3>Building Microservices-Driven Applications</h3>
-                            <div class="cert-issuer">
-                                <i class="fas fa-cloud"></i>
-                                <span>Eduonix</span>
+                            <div class="cert-footer">
+                                <div class="cert-date">Issued: 2024</div>
+                                <a href="#" class="cert-link" onclick="event.stopPropagation(); showCertificate('spring'); return false;">
+                                    View Details <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <p>Advanced certification in designing, developing, and deploying microservices-based applications with Spring Cloud.</p>
-                            <div class="cert-date">Cert ID: 4cc2f9c6c4</div>
                         </div>
                     </div>
                 </div>
@@ -2234,6 +2629,14 @@
                     shapes.style.transform = `translateY(${scrolled * 0.5}px)`;
                 }
             });
+            
+            // Initialize carousel with custom settings
+            const certCarousel = new bootstrap.Carousel(document.getElementById('certificationsCarousel'), {
+                interval: 5000,
+                wrap: true,
+                touch: true,
+                pause: 'hover'
+            });
         });
 
         // 3D Particles with Three.js
@@ -2316,7 +2719,7 @@
         }
 
         // 3D hover effects for cards
-        document.querySelectorAll('.project-card, .skill-category, .contact-card, .certification-card').forEach(card => {
+        document.querySelectorAll('.project-card, .skill-category, .contact-card, .certification-card, .certification-card-slider').forEach(card => {
             card.addEventListener('mousemove', function(e) {
                 const rect = this.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -2490,7 +2893,7 @@
                 date: "2024",
                 verifyUrl: "https://simpli-web.app.link/e/5qnyVkMujZb",
                 description: "Certification demonstrating expertise in MongoDB NoSQL database design, CRUD operations, indexing, aggregation framework, data modeling, and database administration.",
-                imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31"
+                imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
             },
             microservices: {
                 title: "Building Microservices-Driven Applications",
@@ -2599,6 +3002,4 @@
         }
     </script>
 </body>
-
 </html>
-
