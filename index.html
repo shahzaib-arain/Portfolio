@@ -1840,7 +1840,7 @@
                     <h2 class="section-title">
                         <span class="section-number">01</span>
                         About Me
-                    </h2>
+            </h2>
                     <p class="section-subtitle">The architect behind robust backend systems</p>
                 </div>
                 
@@ -1991,6 +1991,9 @@
                             <div class="skill-badge">Maven</div>
                             <div class="skill-badge">Postman</div>
                             <div class="skill-badge">Linux</div>
+                            <div class="skill-badge">Spring AI</div>
+                            <div class="skill-badge">AWS EC2</div>
+                            <div class="skill-badge">S3 Lambda</div>
                         </div>
                     </div>
                     
@@ -2216,6 +2219,37 @@
                 </div>
                 
                 <div class="projects-grid">
+
+                                        <!-- NEW PROJECT: AI Subscription Management System -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="project-header">
+                            <div class="project-badge">Fintech / AI</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>AI-Subscription-Management-System 💳</h3>
+                            <p class="project-description">
+                                AI-powered subscription management system that automatically detects recurring payments, monitors billing patterns, detects anomalies (price hikes, suspicious renewals), and provides full user control with real-time alerts. Built for modern digital banking infrastructure.
+                            </p>
+                            <div class="tech-stack">
+                                <span>Spring Boot</span>
+                                <span>Spring AI</span>
+                                <span>Python ML</span>
+                                <span>TensorFlow</span>
+                                <span>PostgreSQL</span>
+                                <span>React</span>
+                                <span>AWS EC2</span>
+                                <span>S3 Lambda</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com/shahzaib-arain/AI-Subscription-Management-System-" target="_blank" class="btn-view btn-github">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <button class="btn-view btn-description" onclick="showProjectDetails('subscriptionAi')">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                        </div>
+                    </div>
                     <!-- MindMapAPI -->
                     <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="project-header">
@@ -2224,8 +2258,7 @@
                         <div class="project-content">
                             <h3>MindMapAPI 🧠</h3>
                             <p class="project-description">
-                                A powerful and feature-rich Java-based API designed to manage and analyze journal entries with enhanced security, real-time messaging, and performance optimization.
-                            </p>
+                              A powerful and feature-rich Java-based API designed to manage and analyze journal entries with enhanced security, real-time messaging, and optimized performance. It ensures scalable data handling, secure access, and efficient processing for a smooth and reliable user experience. It also integrates modern backend tools to support intelligent features and system reliability in production environments.
                             <div class="tech-stack">
                                 <span>Spring Boot</span>
                                 <span>MongoDB</span>
@@ -2253,7 +2286,7 @@
                         <div class="project-content">
                             <h3>DermaCare 🌐</h3>
                             <p class="project-description">
-                                Scalable healthcare platform with 7+ microservices using Spring Cloud, OAuth2, JWT, API Gateway, and Eureka. Features Kafka alerts and hybrid persistence.
+                                Scalable healthcare platform with 7+ microservices using Spring Cloud, OAuth2, JWT, API Gateway, and Eureka. Features Kafka-based real-time alerts, centralized configuration, and hybrid data persistence with MySQL and MongoDB for high availability and performance. It enables modular development, secure communication between services, and seamless scalability for enterprise-level healthcare solutions.
                             </p>
                             <div class="tech-stack">
                                 <span>Spring Cloud</span>
@@ -2302,6 +2335,8 @@
                             </button>
                         </div>
                     </div>
+
+
                 </div>
                 
                 <!-- More Projects -->
@@ -2656,7 +2691,7 @@
             particle.style.animationDelay = `${delay}s`;
         });
 
-        // Project Details Data
+        // Project Details Data (including new AI Subscription project)
         const projectDetails = {
             mindmap: {
                 title: "MindMapAPI 🧠",
@@ -2763,6 +2798,58 @@
                         <li>Role-based access control</li>
                     </ul>
                 `
+            },
+            subscriptionAi: {
+                title: "AI-Subscription-Management-System (Fintech)",
+                description: `
+                    <p>A cutting-edge Fintech solution that brings AI-powered intelligence to subscription management within digital banking platforms. Unlike traditional fraud systems that miss recurring payment anomalies, this system automatically identifies subscription transactions, monitors billing patterns, detects abnormal charges, and gives users full control over recurring payments.</p>
+                    
+                    <h3>🔍 Problem Statement Solved</h3>
+                    <ul class="modal-features">
+                        <li><strong>Limited visibility</strong> of active subscriptions</li>
+                        <li><strong>Difficulty identifying</strong> recurring charges</li>
+                        <li><strong>Inability to detect</strong> abnormal billing patterns</li>
+                        <li><strong>Unauthorized renewals</strong> going unnoticed</li>
+                        <li><strong>Missing alerts</strong> for sudden price increases</li>
+                    </ul>
+                    
+                    <h3>💡 Key Features</h3>
+                    <ul class="modal-features">
+                        <li><strong>Subscription Dashboard:</strong> Centralized overview of all recurring payments</li>
+                        <li><strong>AI Subscription Detection:</strong> Automatically identifies recurring patterns</li>
+                        <li><strong>Fraud Alerts:</strong> Detects sudden price increases or suspicious charges</li>
+                        <li><strong>Inactive Subscription Monitoring:</strong> Flags subscriptions with no usage</li>
+                        <li><strong>User Controls:</strong> Approve, pause, or block subscriptions directly</li>
+                        <li><strong>Real-time Notifications:</strong> Via app, email, or SMS</li>
+                    </ul>
+                    
+                    <h3>🏗️ System Architecture</h3>
+                    <ul class="modal-features">
+                        <li><strong>Frontend:</strong> React dashboard for user interaction</li>
+                        <li><strong>Backend:</strong> Java Spring Boot services (transaction ingestion, management, notifications)</li>
+                        <li><strong>Database:</strong> PostgreSQL / MongoDB</li>
+                        <li><strong>AI Microservice:</strong> Python (Scikit-learn, TensorFlow) for detection & anomalies</li>
+                        <li><strong>Notification Service:</strong> App/Email/SMS alerts</li>
+                        <li><strong>Infrastructure:</strong> AWS EC2, S3, Lambda for serverless scalability</li>
+                    </ul>
+                    
+                    <h3>📊 Market Impact</h3>
+                    <p>Increases financial transparency, reduces wasted spending, improves fraud detection for recurring transactions, and brings AI-driven intelligence into digital banking — outperforming solutions like PayPal, Rocket Money, and traditional bank apps.</p>
+                    
+                    <h3>🛠️ Tech Stack</h3>
+                    <div class="modal-tech-stack">
+                        <span>Java Spring Boot</span>
+                        <span>Spring AI</span>
+                        <span>Python ML</span>
+                        <span>Scikit-learn</span>
+                        <span>TensorFlow</span>
+                        <span>React</span>
+                        <span>PostgreSQL</span>
+                        <span>AWS EC2</span>
+                        <span>AWS S3</span>
+                        <span>AWS Lambda</span>
+                    </div>
+                `
             }
         };
 
@@ -2816,13 +2903,15 @@
         function handleImageError(img) {
             img.style.display = 'none';
             const container = img.parentElement;
-            container.innerHTML = `
-                <div class="certificate-placeholder">
-                    <i class="fas fa-certificate"></i>
-                    <p>Certificate Preview</p>
-                    <small>Click verify link to view actual certificate</small>
-                </div>
-            `;
+            if(container && container.innerHTML) {
+                container.innerHTML = `
+                    <div class="certificate-placeholder">
+                        <i class="fas fa-certificate"></i>
+                        <p>Certificate Preview</p>
+                        <small>Click verify link to view actual certificate</small>
+                    </div>
+                `;
+            }
         }
 
         // Modal Functions
@@ -2877,35 +2966,54 @@
         }
 
         // Close modals
-        document.getElementById('modalClose').addEventListener('click', function() {
-            closeProjectModal();
-        });
-
-        document.getElementById('projectModal').addEventListener('click', function(e) {
-            if (e.target === this) {
+        const modalCloseBtn = document.getElementById('modalClose');
+        if(modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', function() {
                 closeProjectModal();
-            }
-        });
+            });
+        }
 
-        document.getElementById('certModalClose').addEventListener('click', function() {
-            closeCertModal();
-        });
+        const projectModalElement = document.getElementById('projectModal');
+        if(projectModalElement) {
+            projectModalElement.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeProjectModal();
+                }
+            });
+        }
 
-        document.getElementById('certModal').addEventListener('click', function(e) {
-            if (e.target === this) {
+        const certModalCloseBtn = document.getElementById('certModalClose');
+        if(certModalCloseBtn) {
+            certModalCloseBtn.addEventListener('click', function() {
                 closeCertModal();
-            }
-        });
+            });
+        }
+
+        const certModalElement = document.getElementById('certModal');
+        if(certModalElement) {
+            certModalElement.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeCertModal();
+                }
+            });
+        }
 
         function closeProjectModal() {
-            document.getElementById('projectModal').style.display = 'none';
+            const modal = document.getElementById('projectModal');
+            if(modal) modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
         function closeCertModal() {
-            document.getElementById('certModal').style.display = 'none';
+            const modal = document.getElementById('certModal');
+            if(modal) modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+
+        // Expose functions globally for onclick handlers
+        window.showProjectDetails = showProjectDetails;
+        window.showCertificate = showCertificate;
+        window.handleImageError = handleImageError;
     </script>
 </body>
 </html>
